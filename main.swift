@@ -15,10 +15,11 @@ class FilesToIPFS : NSObject {
         let alertFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
         let alert = NSAlert()
         alert.messageText = "args were received."
+        alert.informativeText = "informative"
         alert.addButton(withTitle: "OK")
         
+        
         let view = NSView(frame: alertFrame)
-        print("translates? \(view.translatesAutoresizingMaskIntoConstraints)")
         
         
         let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 200, height: 200))
@@ -49,6 +50,9 @@ class FilesToIPFS : NSObject {
         //view.addSubview(hashes)
         view.addSubview(scrollView)
         
+        /// This is necessary for selections and off-view cells to be drawn.
+        view.wantsLayer = true
+
         /// We need a text field to fill with the hashes
         //view.addSubview(NSButton(checkboxWithTitle: "tick", target: nil, action: nil))
         alert.accessoryView = view
@@ -71,10 +75,12 @@ extension FilesToIPFS : NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         print("ping")
+        
         var txtView: NSTextField? = tableView.make(withIdentifier: "arsetext", owner: self) as? NSTextField
             
         if txtView == nil {
-            txtView = NSTextField(frame: NSRect(x: 0, y: 0, width: 50, height: 30))
+            
+            txtView = NSTextField(frame: NSRect(origin: CGPoint.zero, size: tableView.frame.size))
             txtView?.identifier = "arsetext"
             print("was nil \(Date())")
         }
@@ -85,27 +91,13 @@ extension FilesToIPFS : NSTableViewDelegate {
     }
  
     
-    /*
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
-        var cellView = tableView.make(withIdentifier: "arsetext", owner: self) as? NSTableCellView
-        
-        if cellView == nil {
-            cellView = NSTableCellView(frame: NSRect(x: 0, y: 0, width: 50, height: 30))
-
-            cellView?.identifier = "arsetext"
-            print("was nil \(Date())")
-        }
-        
-        cellView?.textField?.stringValue = args[row]
-        return cellView
-    }
- */
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         return 20.0
     }
     
-    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        print("bo selecta")
+    }
 }
 
 @available(OSX 10.12, *)
