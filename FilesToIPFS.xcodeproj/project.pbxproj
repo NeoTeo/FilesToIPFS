@@ -71,6 +71,16 @@
 		AB3879351E0AA084005B3811 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB38793F1E0AA12A005B3811 /* SwiftBase58.framework */,
+				AB3879401E0AA12A005B3811 /* SwiftGMP.framework */,
+				AB3879411E0AA12A005B3811 /* SwiftHex.framework */,
+				AB3879421E0AA12A005B3811 /* SwiftIpfsApi.framework */,
+				AB3879431E0AA12A005B3811 /* SwiftMultiaddr.framework */,
+				AB3879441E0AA12A005B3811 /* SwiftMultihash.framework */,
+				AB3879451E0AA12A005B3811 /* VarInt.framework */,
+				AB38793D1E0AA106005B3811 /* SwiftBase58.framework */,
+				AB3879391E0AA0E5005B3811 /* SwiftIpfsApi.framework */,
+				AB38793A1E0AA0E5005B3811 /* SwiftMultihash.framework */,
 				AB3879361E0AA084005B3811 /* SwiftMultihash.framework */,
 			);
 			name = Frameworks;
@@ -94,16 +104,6 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
-				AB38793F1E0AA12A005B3811 /* SwiftBase58.framework */,
-				AB3879401E0AA12A005B3811 /* SwiftGMP.framework */,
-				AB3879411E0AA12A005B3811 /* SwiftHex.framework */,
-				AB3879421E0AA12A005B3811 /* SwiftIpfsApi.framework */,
-				AB3879431E0AA12A005B3811 /* SwiftMultiaddr.framework */,
-				AB3879441E0AA12A005B3811 /* SwiftMultihash.framework */,
-				AB3879451E0AA12A005B3811 /* VarInt.framework */,
-				AB38793D1E0AA106005B3811 /* SwiftBase58.framework */,
-				AB3879391E0AA0E5005B3811 /* SwiftIpfsApi.framework */,
-				AB38793A1E0AA0E5005B3811 /* SwiftMultihash.framework */,
 				OBJ_7 /* Sources */,
 				OBJ_10 /* Tests */,
 				OBJ_11 /* Products */,

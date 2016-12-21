@@ -7,6 +7,7 @@ import SwiftMultihash
 @available(OSX 10.12, *)
 class FilesToIPFS : NSObject {
 
+    var logToFile: NSButton!
     var args: [String]!
     
     func main() {
@@ -23,8 +24,8 @@ class FilesToIPFS : NSObject {
         
         let view = NSView(frame: alertFrame)
         
-        
-        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 0, width: 200, height: 200))
+        /// Set the scroll view a bit above the bottom of the accessory view
+        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 30, width: alertFrame.size.width, height: 200))
         //scrollView.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         scrollView.borderType = .grooveBorder
         scrollView.hasVerticalScroller = true
@@ -34,18 +35,15 @@ class FilesToIPFS : NSObject {
         
         let hashes = NSTableView(frame: clipViewBounds)
         hashes.allowsMultipleSelection = true
-        //hashes.sizeLastColumnToFit()
-        hashes.sizeToFit()
         
         scrollView.documentView = hashes
         
         hashes.delegate = self
         hashes.dataSource = self
-        let hashesColumn = NSTableColumn(identifier: "hashes")
-        
         hashes.headerView = nil
-        //hashesColumn.headerCell.title = "Hashes"
-        hashesColumn.width = 100
+        
+        let hashesColumn = NSTableColumn(identifier: "hashes")
+        hashesColumn.width = clipViewBounds.size.width - 3
         
         hashes.addTableColumn(hashesColumn)
         
@@ -56,7 +54,11 @@ class FilesToIPFS : NSObject {
         view.wantsLayer = true
 
         /// We need a text field to fill with the hashes
-        //view.addSubview(NSButton(checkboxWithTitle: "tick", target: nil, action: nil))
+        logToFile = NSButton(checkboxWithTitle: "Log to file", target: self, action: #selector(FilesToIPFS.toggleLogToFile))
+        logToFile.frame.origin = CGPoint(x: 10, y: 0)
+        
+        view.addSubview(logToFile)
+        
         alert.accessoryView = view
         
         alert.runModal()
@@ -68,33 +70,60 @@ class FilesToIPFS : NSObject {
             let filePath = "file://" + args[i]
             filePaths.append(filePath)
         }
-        let _ = generateHashes(from: filePaths)
-        print("done")
+        
+        generateHashes(from: filePaths) { hashes in
+            print("done: \(hashes)")
+            
+            self.copyToClipboard(hashes: hashes)
+            
+            exit(EXIT_SUCCESS)
+        }
+        print("waiting...")
+        
         CFRunLoopRun()
+    }
+    
+    func toggleLogToFile() {
+        let state = logToFile.state == NSOnState ? "On" : "Off"
+        print("toggle \(state)")
+        
     }
     
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
         print("click")
     }
     
-    func generateHashes(from filePaths: [String]) -> [String] {
+    func copyToClipboard(hashes: [String]) {
+        /// Write the selected hashes to the system pasteboard.
+        if hashes.count > 0 {
+            let pb = NSPasteboard.general()
+            pb.clearContents()
+            pb.writeObjects(hashes as [NSPasteboardWriting])
+        }
+    }
+    
+    /// Asynchronously generate hashes from the given filepaths.
+    /// Calls the handler on success.
+    func generateHashes(from filePaths: [String], completionHandler: @escaping ([String]) -> Void ) {
         // FIXME: Ensure there actually are files at the filePaths.
+        var hashes = [String]()
+        
         do {
             let api = try IpfsApi(host: "127.0.0.1", port: 5001)
-            print("The filepaths: \(filePaths)")
+
             try api.add(filePaths) { result in
+                
                 for index in 0 ..< filePaths.count {
-                    print("hash for \(filePaths[index]) is \(b58String(result[index].hash!))")
-                    
+                    hashes.append(b58String(result[index].hash!))
                 }
-                exit(EXIT_SUCCESS)
+                
+                completionHandler(hashes)
+                
             }
         } catch {
             print("error \(error)")
-            return []
+            return
         }
-        
-        return [""]
     }
 }
 
@@ -109,7 +138,8 @@ extension FilesToIPFS : NSTableViewDelegate {
             
         if txtView == nil {
             
-            txtView = NSTextField(frame: NSRect(origin: CGPoint.zero, size: tableView.frame.size))
+//            txtView = NSTextField(frame: NSRect(origin: CGPoint.zero, size: tableView.frame.size))
+            txtView = NSTextField()
             txtView?.identifier = "arsetext"
             print("was nil \(Date())")
         }
