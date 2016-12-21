@@ -9,6 +9,7 @@ class FilesToIPFS : NSObject {
 
     var logToFile: NSButton!
     var args: [String]!
+    var pathLabel: NSTextField!
     
     func main() {
         
@@ -25,7 +26,7 @@ class FilesToIPFS : NSObject {
         let view = NSView(frame: alertFrame)
         
         /// Set the scroll view a bit above the bottom of the accessory view
-        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 30, width: alertFrame.size.width, height: 200))
+        let scrollView = NSScrollView(frame: NSRect(x: 0, y: 60, width: alertFrame.size.width, height: 200))
         //scrollView.autoresizingMask = [.viewWidthSizable, .viewHeightSizable]
         scrollView.borderType = .grooveBorder
         scrollView.hasVerticalScroller = true
@@ -55,9 +56,18 @@ class FilesToIPFS : NSObject {
 
         /// We need a text field to fill with the hashes
         logToFile = NSButton(checkboxWithTitle: "Log to file", target: self, action: #selector(FilesToIPFS.toggleLogToFile))
-        logToFile.frame.origin = CGPoint(x: 10, y: 0)
+        logToFile.frame.origin = CGPoint(x: 0, y: 30)
         
         view.addSubview(logToFile)
+        
+        /// Set up path label
+        pathLabel = NSTextField(frame: NSRect(x: 0, y: 0, width: hashes.frame.width, height: 20))
+        pathLabel.stringValue = "/some/path"
+        pathLabel.isEditable = false
+        let clickRecognizer = NSClickGestureRecognizer(target: self, action: #selector(FilesToIPFS.changeLogFile))
+        pathLabel.addGestureRecognizer(clickRecognizer)
+        
+        view.addSubview(pathLabel)
         
         alert.accessoryView = view
         
@@ -83,10 +93,28 @@ class FilesToIPFS : NSObject {
         CFRunLoopRun()
     }
     
+    
+    func changeLogFile() {
+        print("cchanges")
+        let pathPanel = NSOpenPanel()
+        pathPanel.title = "Select new log file."
+        pathPanel.canChooseDirectories = false
+        pathPanel.canCreateDirectories = false
+        pathPanel.allowsMultipleSelection = false
+        pathPanel.allowedFileTypes = ["txt"]
+        
+        if pathPanel.runModal() == NSModalResponseOK {
+            /// change the path to the value
+            if let result = pathPanel.url {
+                pathLabel.stringValue = result.path
+            }
+        }
+    }
+    
     func toggleLogToFile() {
         let state = logToFile.state == NSOnState ? "On" : "Off"
         print("toggle \(state)")
-        
+        if logToFile.state == NSOffState { pathLabel.isHidden = true } else { pathLabel.isHidden = false }
     }
     
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
