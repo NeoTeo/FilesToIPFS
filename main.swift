@@ -1,6 +1,8 @@
 import Foundation
 import AppKit
 
+import SwiftIpfsApi
+import SwiftMultihash
 
 @available(OSX 10.12, *)
 class FilesToIPFS : NSObject {
@@ -60,12 +62,39 @@ class FilesToIPFS : NSObject {
         alert.runModal()
         
         print("Selection was \(hashes.selectedRowIndexes)")
+        var filePaths = [String]()
+        for i in hashes.selectedRowIndexes {
+            print("selected: \(args[i])")
+            let filePath = "file://" + args[i]
+            filePaths.append(filePath)
+        }
+        let _ = generateHashes(from: filePaths)
         print("done")
-    //    CFRunLoopRun()
+        CFRunLoopRun()
     }
     
     func textView(_ textView: NSTextView, clickedOn cell: NSTextAttachmentCellProtocol, in cellFrame: NSRect, at charIndex: Int) {
         print("click")
+    }
+    
+    func generateHashes(from filePaths: [String]) -> [String] {
+        // FIXME: Ensure there actually are files at the filePaths.
+        do {
+            let api = try IpfsApi(host: "127.0.0.1", port: 5001)
+            print("The filepaths: \(filePaths)")
+            try api.add(filePaths) { result in
+                for index in 0 ..< filePaths.count {
+                    print("hash for \(filePaths[index]) is \(b58String(result[index].hash!))")
+                    
+                }
+                exit(EXIT_SUCCESS)
+            }
+        } catch {
+            print("error \(error)")
+            return []
+        }
+        
+        return [""]
     }
 }
 

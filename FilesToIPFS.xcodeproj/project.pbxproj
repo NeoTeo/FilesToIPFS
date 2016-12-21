@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB38793B1E0AA0E5005B3811 /* SwiftIpfsApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB3879391E0AA0E5005B3811 /* SwiftIpfsApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB38793C1E0AA0E5005B3811 /* SwiftMultihash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB38793A1E0AA0E5005B3811 /* SwiftMultihash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB38793E1E0AA106005B3811 /* SwiftBase58.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB38793D1E0AA106005B3811 /* SwiftBase58.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB3879461E0AA12A005B3811 /* SwiftGMP.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB3879401E0AA12A005B3811 /* SwiftGMP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB3879471E0AA12A005B3811 /* SwiftHex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB3879411E0AA12A005B3811 /* SwiftHex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB3879481E0AA12A005B3811 /* SwiftMultiaddr.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB3879431E0AA12A005B3811 /* SwiftMultiaddr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB3879491E0AA12A005B3811 /* VarInt.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB3879451E0AA12A005B3811 /* VarInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB38794A1E0AA180005B3811 /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB3879441E0AA12A005B3811 /* SwiftMultihash.framework */; };
+		AB45FA131E0A98E4008FFCA3 /* SwiftIpfsApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB45FA051E0A9837008FFCA3 /* SwiftIpfsApi.framework */; };
+		OBJ_18 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB3879381E0AA0C3005B3811 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB38793E1E0AA106005B3811 /* SwiftBase58.framework in CopyFiles */,
+				AB3879461E0AA12A005B3811 /* SwiftGMP.framework in CopyFiles */,
+				AB3879471E0AA12A005B3811 /* SwiftHex.framework in CopyFiles */,
+				AB38793B1E0AA0E5005B3811 /* SwiftIpfsApi.framework in CopyFiles */,
+				AB3879481E0AA12A005B3811 /* SwiftMultiaddr.framework in CopyFiles */,
+				AB38793C1E0AA0E5005B3811 /* SwiftMultihash.framework in CopyFiles */,
+				AB3879491E0AA12A005B3811 /* VarInt.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AB3879361E0AA084005B3811 /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/Mac/SwiftMultihash.framework; sourceTree = "<group>"; };
+		AB3879391E0AA0E5005B3811 /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = Carthage/Build/Mac/SwiftIpfsApi.framework; sourceTree = "<group>"; };
+		AB38793A1E0AA0E5005B3811 /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/Mac/SwiftMultihash.framework; sourceTree = "<group>"; };
+		AB38793D1E0AA106005B3811 /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/Mac/SwiftBase58.framework; sourceTree = "<group>"; };
+		AB38793F1E0AA12A005B3811 /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/Mac/SwiftBase58.framework; sourceTree = "<group>"; };
+		AB3879401E0AA12A005B3811 /* SwiftGMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGMP.framework; path = Carthage/Build/Mac/SwiftGMP.framework; sourceTree = "<group>"; };
+		AB3879411E0AA12A005B3811 /* SwiftHex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHex.framework; path = Carthage/Build/Mac/SwiftHex.framework; sourceTree = "<group>"; };
+		AB3879421E0AA12A005B3811 /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = Carthage/Build/Mac/SwiftIpfsApi.framework; sourceTree = "<group>"; };
+		AB3879431E0AA12A005B3811 /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/Mac/SwiftMultiaddr.framework; sourceTree = "<group>"; };
+		AB3879441E0AA12A005B3811 /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/Mac/SwiftMultihash.framework; sourceTree = "<group>"; };
+		AB3879451E0AA12A005B3811 /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/Mac/VarInt.framework; sourceTree = "<group>"; };
+		AB45FA051E0A9837008FFCA3 /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = /Users/teo/source/Apple/OSX/FilesToIPFS/Carthage/Build/Mac/SwiftIpfsApi.framework; sourceTree = "<absolute>"; };
+		OBJ_12 /* FilesToIPFS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = FilesToIPFS; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_9 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				AB38794A1E0AA180005B3811 /* SwiftMultihash.framework in Frameworks */,
+				AB45FA131E0A98E4008FFCA3 /* SwiftIpfsApi.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB3879351E0AA084005B3811 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB3879361E0AA084005B3811 /* SwiftMultihash.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		OBJ_10 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		OBJ_11 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_12 /* FilesToIPFS */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				AB38793F1E0AA12A005B3811 /* SwiftBase58.framework */,
+				AB3879401E0AA12A005B3811 /* SwiftGMP.framework */,
+				AB3879411E0AA12A005B3811 /* SwiftHex.framework */,
+				AB3879421E0AA12A005B3811 /* SwiftIpfsApi.framework */,
+				AB3879431E0AA12A005B3811 /* SwiftMultiaddr.framework */,
+				AB3879441E0AA12A005B3811 /* SwiftMultihash.framework */,
+				AB3879451E0AA12A005B3811 /* VarInt.framework */,
+				AB38793D1E0AA106005B3811 /* SwiftBase58.framework */,
+				AB3879391E0AA0E5005B3811 /* SwiftIpfsApi.framework */,
+				AB38793A1E0AA0E5005B3811 /* SwiftMultihash.framework */,
+				OBJ_7 /* Sources */,
+				OBJ_10 /* Tests */,
+				OBJ_11 /* Products */,
+				AB3879351E0AA084005B3811 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* FilesToIPFS */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		OBJ_8 /* FilesToIPFS */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_9 /* main.swift */,
+			);
+			name = FilesToIPFS;
+			path = .;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		OBJ_13 /* FilesToIPFS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_14 /* Build configuration list for PBXNativeTarget "FilesToIPFS" */;
+			buildPhases = (
+				OBJ_17 /* Sources */,
+				OBJ_19 /* Frameworks */,
+				AB3879381E0AA0C3005B3811 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FilesToIPFS;
+			productName = FilesToIPFS;
+			productReference = OBJ_12 /* FilesToIPFS */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "FilesToIPFS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_11 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				OBJ_13 /* FilesToIPFS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_18 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = FilesToIPFS.xcodeproj/FilesToIPFS_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				TARGET_NAME = FilesToIPFS;
+			};
+			name = Debug;
+		};
+		OBJ_16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = FilesToIPFS.xcodeproj/FilesToIPFS_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				TARGET_NAME = FilesToIPFS;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_14 /* Build configuration list for PBXNativeTarget "FilesToIPFS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_15 /* Debug */,
+				OBJ_16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "FilesToIPFS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
