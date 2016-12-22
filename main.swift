@@ -7,9 +7,14 @@ import SwiftMultihash
 @available(OSX 10.12, *)
 class FilesToIPFS : NSObject {
 
+    enum TGError : Error {
+        case generic(String)
+    }
+    
     var logToFile: NSButton!
     var args: [String]!
     var pathLabel: NSTextField!
+    var alert: NSAlert!
     
     func main() {
         
@@ -17,7 +22,7 @@ class FilesToIPFS : NSObject {
         print("args were: \(args)")
         
         let alertFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
-        let alert = NSAlert()
+        alert = NSAlert()
         alert.messageText = "args were received."
         alert.informativeText = "informative"
         alert.addButton(withTitle: "OK")
@@ -64,6 +69,8 @@ class FilesToIPFS : NSObject {
         pathLabel = NSTextField(frame: NSRect(x: 0, y: 0, width: hashes.frame.width, height: 20))
         pathLabel.stringValue = "/some/path"
         pathLabel.isEditable = false
+        pathLabel.isHidden = logToFile.state == NSOffState ? true : false
+        
         let clickRecognizer = NSClickGestureRecognizer(target: self, action: #selector(FilesToIPFS.changeLogFile))
         pathLabel.addGestureRecognizer(clickRecognizer)
         
@@ -73,35 +80,98 @@ class FilesToIPFS : NSObject {
         
         alert.runModal()
         
-        print("Selection was \(hashes.selectedRowIndexes)")
-        var filePaths = [String]()
-        for i in hashes.selectedRowIndexes {
-            print("selected: \(args[i])")
-            let filePath = "file://" + args[i]
-            filePaths.append(filePath)
-        }
+        
+        guard let selectees = (args as NSArray).objects(at: hashes.selectedRowIndexes) as? [String], selectees.count > 0 else { return }
+        
+        let filePaths = selectees.map { "file://" + $0 }
         
         generateHashes(from: filePaths) { hashes in
             print("done: \(hashes)")
             
             self.copyToClipboard(hashes: hashes)
             
-            exit(EXIT_SUCCESS)
+            guard FileManager.default.fileExists(atPath: self.pathLabel.stringValue) == true else {
+                print("Error: log file not found")
+                return
+            }
+            
+            do {
+                
+                let entries = try self.formatHashes(hashes: hashes, paths: filePaths)
+                print("formatted: \(entries)")
+                
+                let validURL = URL(fileURLWithPath: self.pathLabel.stringValue)
+                try self.append(entries: entries, to: validURL)
+                
+                exit(EXIT_SUCCESS)
+                
+            } catch {
+                print("Error: \(error)")
+                exit(EXIT_FAILURE)
+            }
         }
         print("waiting...")
         
         CFRunLoopRun()
     }
     
+    func selectedFiles(selectedIndexes: IndexSet, from files: [String]) -> [String] {
+        
+        var filePaths = [String]()
+        for i in selectedIndexes {
+            
+            let filePath = "file://" + args[i]
+            filePaths.append(filePath)
+        }
+        return filePaths
+    }
+    
+    func formatHashes(hashes: [String], paths: [String]) throws -> [String] {
+        
+        guard hashes.count == paths.count else { throw TGError.generic("hashes and paths don't match") }
+        
+//        let locDate = DateFormatter.dateFormat(fromTemplate: "", options: 0, locale: Locale(identifier: "en_GB"))
+        let locDate = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .long)
+//        let locDate = Date().description(with: Locale.current)
+        
+        let hashEntries = hashes.enumerated().map { (index, element) -> String in
+            let filename = NSString(string: paths[index]).lastPathComponent
+            
+            return "\nadded \(element) \(filename) \(locDate)"
+        }
+        
+        return hashEntries
+    }
+    
+    func append(entries: [String], to file: URL) throws {
+        
+        let fileHandle = try FileHandle(forWritingTo: file)
+        defer { fileHandle.closeFile() }
+        
+        fileHandle.seekToEndOfFile()
+        for entry in entries {
+            if let dat = entry.data(using: .utf8) {
+                fileHandle.write(dat)
+            }
+        }
+    }
     
     func changeLogFile() {
-        print("cchanges")
+        
         let pathPanel = NSOpenPanel()
-        pathPanel.title = "Select new log file."
+        pathPanel.title = "Log file selector"
+        pathPanel.message = "Select log file"
+        pathPanel.directoryURL = URL(fileURLWithPath: "/Users/teo")
+        
         pathPanel.canChooseDirectories = false
         pathPanel.canCreateDirectories = false
         pathPanel.allowsMultipleSelection = false
         pathPanel.allowedFileTypes = ["txt"]
+        
+        /// Force the open panel to appear on top of the alert dialog.
+        for win in NSApp.windows {
+            if win.isKind(of: NSOpenPanel.self) { win.level = alert.window.level + 1 }
+        }
         
         if pathPanel.runModal() == NSModalResponseOK {
             /// change the path to the value
