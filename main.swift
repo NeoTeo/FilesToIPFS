@@ -22,6 +22,7 @@ class FilesToIPFS : NSObject {
         
         /// Drop out if no args provided.
         guard args.count > 0 else { return }
+        print("args are \(args)")
         
         let alertFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
         alert = NSAlert()
@@ -99,7 +100,7 @@ class FilesToIPFS : NSObject {
             self.storeToLog(hashes: hashes, filePaths: filePaths)
         }
         
-        /// Wait here for exit.
+        
         CFRunLoopRun()
     }
     
@@ -232,8 +233,8 @@ class FilesToIPFS : NSObject {
                 
             }
         } catch {
-            print("error \(error)")
-            return
+            print("error generating hashes \(error)")
+            exit(EXIT_FAILURE)
         }
     }
 }

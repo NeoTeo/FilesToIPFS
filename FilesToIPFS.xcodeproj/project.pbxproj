@@ -24,7 +24,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 6;
+			dstSubfolderSpec = 10;
 			files = (
 				AB38793E1E0AA106005B3811 /* SwiftBase58.framework in CopyFiles */,
 				AB3879461E0AA12A005B3811 /* SwiftGMP.framework in CopyFiles */,
