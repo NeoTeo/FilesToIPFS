@@ -18,15 +18,17 @@ class FilesToIPFS : NSObject {
     
     func main() {
         
-        args = CommandLine.arguments as [String]
-        print("args were: \(args)")
+        args = Array<String>(CommandLine.arguments.dropFirst())
+        
+        /// Drop out if no args provided.
+        guard args.count > 0 else { return }
         
         let alertFrame = NSRect(x: 0, y: 0, width: 400, height: 300)
         alert = NSAlert()
         alert.messageText = "Add to IPFS"
         alert.informativeText = "Select files to add to the local IPFS node. The resulting hashes will be also copied to the clipboard."
         alert.addButton(withTitle: "Add")
-        
+        alert.addButton(withTitle: "Cancel")
         
         let view = NSView(frame: alertFrame)
         
@@ -80,7 +82,8 @@ class FilesToIPFS : NSObject {
         
         alert.accessoryView = view
         
-        alert.runModal()
+        /// Drop out on cancel
+        if alert.runModal() == NSAlertSecondButtonReturn { return }
         
         
         guard let selectees = (args as NSArray).objects(at: hashes.selectedRowIndexes) as? [String], selectees.count > 0 else { return }
@@ -95,8 +98,8 @@ class FilesToIPFS : NSObject {
             
             self.storeToLog(hashes: hashes, filePaths: filePaths)
         }
-        print("waiting...")
         
+        /// Wait here for exit.
         CFRunLoopRun()
     }
     
@@ -192,7 +195,7 @@ class FilesToIPFS : NSObject {
     
     func toggleLogToFile() {
         let state = logToFile.state == NSOnState ? "On" : "Off"
-        print("toggle \(state)")
+        
         if logToFile.state == NSOffState { pathLabel.isHidden = true } else { pathLabel.isHidden = false }
         UserDefaults.standard.setValue(logToFile.state, forKey: "FilesToIPFSLogPreference")
     }
@@ -240,16 +243,13 @@ extension FilesToIPFS : NSTableViewDelegate {
     
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        print("ping")
         
-        var txtView: NSTextField? = tableView.make(withIdentifier: "arsetext", owner: self) as? NSTextField
+        var txtView: NSTextField? = tableView.make(withIdentifier: "fileField", owner: self) as? NSTextField
             
         if txtView == nil {
             
-//            txtView = NSTextField(frame: NSRect(origin: CGPoint.zero, size: tableView.frame.size))
             txtView = NSTextField()
-            txtView?.identifier = "arsetext"
-            print("was nil \(Date())")
+            txtView?.identifier = "fileField"
         }
 
         txtView?.stringValue = args[row]
@@ -270,13 +270,11 @@ extension FilesToIPFS : NSTableViewDelegate {
 @available(OSX 10.12, *)
 extension FilesToIPFS : NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        //print("arg count is \(args.count)")
         return args.count
     }
     
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        //print("asking for object for row \(row)")
         return args[row]
     }
 }
