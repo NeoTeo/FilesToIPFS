@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="FilesToIpfs" customModule="FilesToIpfs" customModuleProvider="target">
             <connections>
+                <outlet property="filePathTable" destination="pTx-nK-Ak7" id="Rqu-fh-yOb"/>
                 <outlet property="filesToIpfsView" destination="Wh5-GA-9Pm" id="BHz-qk-gPE"/>
                 <outlet property="view" destination="Wh5-GA-9Pm" id="p0h-bp-zzD"/>
             </connections>
@@ -108,7 +109,7 @@ The resulting hashes will be copied to the clipboard.</string>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeT-pO-afj">
                     <rect key="frame" x="20" y="49" width="440" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4jI-Z5-nQO">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4jI-Z5-nQO">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -125,7 +126,7 @@ The resulting hashes will be copied to the clipboard.</string>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="addAction:" target="Wh5-GA-9Pm" id="eUr-cm-xUr"/>
+                        <action selector="addAction:" target="-2" id="SM9-XP-J4b"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ebX-Ym-AjM">
@@ -153,6 +154,7 @@ Gw
                 </textField>
             </subviews>
             <connections>
+                <outlet property="logToFile" destination="T9B-Pp-1na" id="ML6-VG-NL4"/>
                 <outlet property="pathToLogfile" destination="BeT-pO-afj" id="pDO-QS-pUE"/>
             </connections>
         </view>
