@@ -10,15 +10,17 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
+  
     @IBOutlet weak var window: NSWindow!
-
-
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        let filesSelector = FilesSelector()
-        filesSelector.wantsLayer = true
-        window.contentView?.addSubview(filesSelector)
+        var f2Ipfs = FilesToIpfs()
+        let args = Array<String>(CommandLine.arguments.dropFirst())
+        f2Ipfs.set(filePaths: args)
+        
+        window.contentViewController = f2Ipfs
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

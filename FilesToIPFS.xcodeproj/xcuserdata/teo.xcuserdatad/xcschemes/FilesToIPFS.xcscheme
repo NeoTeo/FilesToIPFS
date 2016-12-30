@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ABBF70591E167EEF0029C52E"
+               BlueprintIdentifier = "AB9516B71E16C5F500724089"
                BuildableName = "FilesToIpfs.app"
                BlueprintName = "FilesToIpfs"
                ReferencedContainer = "container:FilesToIpfs.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABBF70591E167EEF0029C52E"
+            BlueprintIdentifier = "AB9516B71E16C5F500724089"
             BuildableName = "FilesToIpfs.app"
             BlueprintName = "FilesToIpfs"
             ReferencedContainer = "container:FilesToIpfs.xcodeproj">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABBF70591E167EEF0029C52E"
+            BlueprintIdentifier = "AB9516B71E16C5F500724089"
             BuildableName = "FilesToIpfs.app"
             BlueprintName = "FilesToIpfs"
             ReferencedContainer = "container:FilesToIpfs.xcodeproj">
@@ -74,7 +74,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABBF70591E167EEF0029C52E"
+            BlueprintIdentifier = "AB9516B71E16C5F500724089"
             BuildableName = "FilesToIpfs.app"
             BlueprintName = "FilesToIpfs"
             ReferencedContainer = "container:FilesToIpfs.xcodeproj">
