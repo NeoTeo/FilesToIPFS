@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        var f2Ipfs = FilesToIpfs()
+        let f2Ipfs = FilesToIpfs()
         let args = Array<String>(CommandLine.arguments.dropFirst())
         f2Ipfs.set(filePaths: args)
         
@@ -25,6 +25,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        
     }
 
 

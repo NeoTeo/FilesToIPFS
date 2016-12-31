@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB6C3D941E1725CE00CAF6E6 /* SwiftBase58.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D8D1E1725CE00CAF6E6 /* SwiftBase58.framework */; };
+		AB6C3D951E1725CE00CAF6E6 /* SwiftGMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D8E1E1725CE00CAF6E6 /* SwiftGMP.framework */; };
+		AB6C3D961E1725CE00CAF6E6 /* SwiftHex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D8F1E1725CE00CAF6E6 /* SwiftHex.framework */; };
+		AB6C3D971E1725CE00CAF6E6 /* SwiftIpfsApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D901E1725CE00CAF6E6 /* SwiftIpfsApi.framework */; };
+		AB6C3D981E1725CE00CAF6E6 /* SwiftMultiaddr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D911E1725CE00CAF6E6 /* SwiftMultiaddr.framework */; };
+		AB6C3D991E1725CE00CAF6E6 /* SwiftMultihash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D921E1725CE00CAF6E6 /* SwiftMultihash.framework */; };
+		AB6C3D9A1E1725CE00CAF6E6 /* VarInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6C3D931E1725CE00CAF6E6 /* VarInt.framework */; };
+		AB6C3D9C1E17267300CAF6E6 /* SwiftBase58.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D8D1E1725CE00CAF6E6 /* SwiftBase58.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3D9D1E17268500CAF6E6 /* SwiftGMP.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D8E1E1725CE00CAF6E6 /* SwiftGMP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3D9E1E17274000CAF6E6 /* SwiftHex.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D8F1E1725CE00CAF6E6 /* SwiftHex.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3D9F1E17275200CAF6E6 /* SwiftIpfsApi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D901E1725CE00CAF6E6 /* SwiftIpfsApi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3DA01E17275C00CAF6E6 /* SwiftMultiaddr.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D911E1725CE00CAF6E6 /* SwiftMultiaddr.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3DA11E17276500CAF6E6 /* SwiftMultihash.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D921E1725CE00CAF6E6 /* SwiftMultihash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AB6C3DA21E17277100CAF6E6 /* VarInt.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB6C3D931E1725CE00CAF6E6 /* VarInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AB9516BC1E16C5F500724089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9516BB1E16C5F500724089 /* AppDelegate.swift */; };
 		AB9516BE1E16C5F500724089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB9516BD1E16C5F500724089 /* Assets.xcassets */; };
 		AB9516C11E16C5F500724089 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9516BF1E16C5F500724089 /* MainMenu.xib */; };
@@ -14,7 +28,33 @@
 		AB9516CB1E16CD8000724089 /* FilesToIpfs.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB9516CA1E16CD8000724089 /* FilesToIpfs.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AB6C3D9B1E17265E00CAF6E6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AB6C3DA21E17277100CAF6E6 /* VarInt.framework in CopyFiles */,
+				AB6C3DA11E17276500CAF6E6 /* SwiftMultihash.framework in CopyFiles */,
+				AB6C3DA01E17275C00CAF6E6 /* SwiftMultiaddr.framework in CopyFiles */,
+				AB6C3D9F1E17275200CAF6E6 /* SwiftIpfsApi.framework in CopyFiles */,
+				AB6C3D9E1E17274000CAF6E6 /* SwiftHex.framework in CopyFiles */,
+				AB6C3D9D1E17268500CAF6E6 /* SwiftGMP.framework in CopyFiles */,
+				AB6C3D9C1E17267300CAF6E6 /* SwiftBase58.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AB6C3D8D1E1725CE00CAF6E6 /* SwiftBase58.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftBase58.framework; path = Carthage/Build/Mac/SwiftBase58.framework; sourceTree = "<group>"; };
+		AB6C3D8E1E1725CE00CAF6E6 /* SwiftGMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGMP.framework; path = Carthage/Build/Mac/SwiftGMP.framework; sourceTree = "<group>"; };
+		AB6C3D8F1E1725CE00CAF6E6 /* SwiftHex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftHex.framework; path = Carthage/Build/Mac/SwiftHex.framework; sourceTree = "<group>"; };
+		AB6C3D901E1725CE00CAF6E6 /* SwiftIpfsApi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftIpfsApi.framework; path = Carthage/Build/Mac/SwiftIpfsApi.framework; sourceTree = "<group>"; };
+		AB6C3D911E1725CE00CAF6E6 /* SwiftMultiaddr.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultiaddr.framework; path = Carthage/Build/Mac/SwiftMultiaddr.framework; sourceTree = "<group>"; };
+		AB6C3D921E1725CE00CAF6E6 /* SwiftMultihash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMultihash.framework; path = Carthage/Build/Mac/SwiftMultihash.framework; sourceTree = "<group>"; };
+		AB6C3D931E1725CE00CAF6E6 /* VarInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VarInt.framework; path = Carthage/Build/Mac/VarInt.framework; sourceTree = "<group>"; };
 		AB9516B81E16C5F500724089 /* FilesToIpfs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilesToIpfs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9516BB1E16C5F500724089 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB9516BD1E16C5F500724089 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -29,17 +69,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB6C3D941E1725CE00CAF6E6 /* SwiftBase58.framework in Frameworks */,
+				AB6C3D951E1725CE00CAF6E6 /* SwiftGMP.framework in Frameworks */,
+				AB6C3D961E1725CE00CAF6E6 /* SwiftHex.framework in Frameworks */,
+				AB6C3D971E1725CE00CAF6E6 /* SwiftIpfsApi.framework in Frameworks */,
+				AB6C3D981E1725CE00CAF6E6 /* SwiftMultiaddr.framework in Frameworks */,
+				AB6C3D991E1725CE00CAF6E6 /* SwiftMultihash.framework in Frameworks */,
+				AB6C3D9A1E1725CE00CAF6E6 /* VarInt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB6C3D8C1E1725CE00CAF6E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB6C3D8D1E1725CE00CAF6E6 /* SwiftBase58.framework */,
+				AB6C3D8E1E1725CE00CAF6E6 /* SwiftGMP.framework */,
+				AB6C3D8F1E1725CE00CAF6E6 /* SwiftHex.framework */,
+				AB6C3D901E1725CE00CAF6E6 /* SwiftIpfsApi.framework */,
+				AB6C3D911E1725CE00CAF6E6 /* SwiftMultiaddr.framework */,
+				AB6C3D921E1725CE00CAF6E6 /* SwiftMultihash.framework */,
+				AB6C3D931E1725CE00CAF6E6 /* VarInt.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB9516AF1E16C5F500724089 = {
 			isa = PBXGroup;
 			children = (
 				AB9516BA1E16C5F500724089 /* FilesToIpfs */,
 				AB9516B91E16C5F500724089 /* Products */,
+				AB6C3D8C1E1725CE00CAF6E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +136,7 @@
 				AB9516B41E16C5F500724089 /* Sources */,
 				AB9516B51E16C5F500724089 /* Frameworks */,
 				AB9516B61E16C5F500724089 /* Resources */,
+				AB6C3D9B1E17265E00CAF6E6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -177,7 +240,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -226,7 +289,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -252,6 +315,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SK8WX2BAWU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = FilesToIpfs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iloveyoubits.FilesToIpfs;
@@ -266,6 +333,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = SK8WX2BAWU;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = FilesToIpfs/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iloveyoubits.FilesToIpfs;

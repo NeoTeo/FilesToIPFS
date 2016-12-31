@@ -9,8 +9,8 @@
 import Foundation
 import AppKit
 
-//import SwiftIpfsApi
-//import SwiftMultihash
+import SwiftIpfsApi
+import SwiftMultihash
 
 class FilesToIpfs : NSViewController {
     
@@ -145,28 +145,32 @@ class FilesToIpfs : NSViewController {
     
     /// Asynchronously generate hashes from the given filepaths.
     /// Calls the handler on success.
-//    func generateHashes(from filePaths: [String], completionHandler: @escaping ([String]) -> Void ) {
-//        // FIXME: Ensure there actually are files at the filePaths.
-//        var hashes = [String]()
-//        
-//        do {
-//            let api = try IpfsApi(host: "127.0.0.1", port: 5001)
-//            
-//            try api.add(filePaths) { result in
-//                
-//                for index in 0 ..< filePaths.count {
-//                    hashes.append(b58String(result[index].hash!))
-//                }
-//                
-//                completionHandler(hashes)
-//                
-//            }
-//        } catch {
-//            print("error generating hashes \(error)")
-//            exit(EXIT_FAILURE)
-//        }
-//    }
+    func generateHashes(from filePaths: [String], completionHandler: @escaping ([String]) -> Void ) {
+        // FIXME: Ensure there actually are files at the filePaths.
+        var hashes = [String]()
+        
+        do {
+            let api = try IpfsApi(host: "127.0.0.1", port: 5001)
+            
+            try api.add(filePaths) { result in
+                
+                for index in 0 ..< filePaths.count {
+                    hashes.append(b58String(result[index].hash!))
+                }
+                
+                completionHandler(hashes)
+                
+            }
+        } catch {
+            print("error generating hashes \(error)")
+            exit(EXIT_FAILURE)
+        }
+    }
     ///////////////////////
+    
+    override func awakeFromNib() {
+        print("awake")
+    }
     
     @IBAction func addAction(_ sender: NSButton) {
         Swift.print("add")
@@ -175,20 +179,21 @@ class FilesToIpfs : NSViewController {
         
         let filePaths = selectees.map { "file://" + $0 }
         print("filepaths \(filePaths)")
-//        generateHashes(from: filePaths) { hashes in
-//            
-//            self.copyToClipboard(hashes: hashes)
-//            
-//            if self.filesToIpfsView.logState == NSOffState { exit(EXIT_SUCCESS) }
-//            
-//            self.storeToLog(hashes: hashes, filePaths: filePaths)
-//        }
+        generateHashes(from: filePaths) { hashes in
+            
+            self.copyToClipboard(hashes: hashes)
+            
+            if self.filesToIpfsView.logState == NSOffState { exit(EXIT_SUCCESS) }
+            
+            self.storeToLog(hashes: hashes, filePaths: filePaths)
+        }
         
     }
 
-    override func awakeFromNib() {
-        print("awake")
+    @IBAction func cancelAction(_ sender: NSButton) {
+        NSApplication.shared().terminate(self)
     }
+
 }
 
 extension FilesToIpfs : NSTableViewDelegate {
@@ -254,14 +259,4 @@ class FilesToIpfsView : NSView {
         UserDefaults.standard.setValue(logToFile.state, forKey: "FilesToIpfsLogPreference")
 
     }
-    
-    @IBAction func cancelAction(_ sender: NSButton) {
-        Swift.print("cancel")
-    }
-    
-    
-    
-    @IBAction func changePathToLogfile(_ sender: NSTextField) {
-        Swift.print("change path")
-    }    
 }
