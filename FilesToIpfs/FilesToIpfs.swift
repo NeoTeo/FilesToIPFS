@@ -197,6 +197,7 @@ class FilesToIpfs : NSViewController {
 }
 
 extension FilesToIpfs : NSTableViewDelegate {
+    
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
         var txtView: NSTextField? = tableView.make(withIdentifier: "fileField", owner: self) as? NSTextField
