@@ -103,7 +103,7 @@ class FilesToIpfs : NSViewController {
             
             let filename = NSString(string: paths[index]).lastPathComponent
             
-            return "added \(element) \(filename) \(locDate)"
+            return "added \(element) \(filename) \(locDate)\n"
         }
         
         return hashEntries
