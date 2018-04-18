@@ -33,12 +33,11 @@ class FilesToIpfs : NSViewController {
         /// set up a gesture recognizer for the view's path field
         let clickRecognizer = NSClickGestureRecognizer(target: self, action: #selector(FilesToIpfs.changeLogFilepath))
         filesToIpfsView.pathToLogfile.addGestureRecognizer(clickRecognizer)
-
-        filesToIpfsView.logState = UserDefaults.standard.object(forKey: "FilesToIpfsLogPreference") as? Int ?? NSOffState
+        filesToIpfsView.logState = UserDefaults.standard.object(forKey: "FilesToIpfsLogPreference") as? NSControl.StateValue ?? NSControl.StateValue.off
         filesToIpfsView.logPath = UserDefaults.standard.object(forKey: "FilesToIpfsLogFilePath") as? String ?? ""
     }
     
-    func changeLogFilepath() {
+    @objc func changeLogFilepath() {
         let pathPanel = NSOpenPanel()
         pathPanel.title = "Log file selector"
         pathPanel.message = "Select log file"
@@ -49,7 +48,7 @@ class FilesToIpfs : NSViewController {
         pathPanel.allowsMultipleSelection = false
         pathPanel.allowedFileTypes = ["txt"]
         
-        if pathPanel.runModal() == NSModalResponseOK {
+        if pathPanel.runModal() == NSApplication.ModalResponse.OK {
             /// change the path to the value
             if let result = pathPanel.url {
                 filesToIpfsView.logPath = result.path
@@ -97,7 +96,7 @@ class FilesToIpfs : NSViewController {
         
         guard hashes.count == paths.count else { throw TGError.generic("hashes and paths don't match") }
         
-        let locDate = DateFormatter.localizedString(from: Date(), dateStyle: .long, timeStyle: .long)
+        let locDate = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .long)
         
         let hashEntries = hashes.enumerated().map { (index, element) -> String in
             
@@ -122,7 +121,6 @@ class FilesToIpfs : NSViewController {
         }
     }
     
-    
 //    func toggleLogToFile() {
 //        let state = logToFile.state == NSOnState ? "On" : "Off"
 //        
@@ -137,7 +135,7 @@ class FilesToIpfs : NSViewController {
     func copyToClipboard(hashes: [String]) {
         /// Write the selected hashes to the system pasteboard.
         if hashes.count > 0 {
-            let pb = NSPasteboard.general()
+            let pb = NSPasteboard.general
             pb.clearContents()
             pb.writeObjects(hashes as [NSPasteboardWriting])
         }
@@ -183,7 +181,7 @@ class FilesToIpfs : NSViewController {
             
             self.copyToClipboard(hashes: hashes)
             
-            if self.filesToIpfsView.logState == NSOffState { exit(EXIT_SUCCESS) }
+            if self.filesToIpfsView.logState == NSControl.StateValue.off { exit(EXIT_SUCCESS) }
             
             self.storeToLog(hashes: hashes, filePaths: filePaths)
         }
@@ -191,7 +189,7 @@ class FilesToIpfs : NSViewController {
     }
 
     @IBAction func cancelAction(_ sender: NSButton) {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 
 }
@@ -200,12 +198,12 @@ extension FilesToIpfs : NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
-        var txtView: NSTextField? = tableView.make(withIdentifier: "fileField", owner: self) as? NSTextField
+        var txtView: NSTextField? = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "fileField"), owner: self) as? NSTextField
         
         if txtView == nil {
             
             txtView = NSTextField()
-            txtView?.identifier = "fileField"
+            txtView?.identifier = NSUserInterfaceItemIdentifier(rawValue: "fileField")
         }
         
         txtView?.stringValue = args[row]
@@ -238,11 +236,12 @@ class FilesToIpfsView : NSView {
     @IBOutlet weak var pathToLogfile: NSTextField!
     @IBOutlet weak var logToFile: NSButton!
 
-    var logState: Int {
+    var logState: NSControl.StateValue {
         set {
             logToFile.state = newValue
-            pathToLogfile.isHidden = (newValue == NSOffState)
+            pathToLogfile.isHidden = (newValue == NSControl.StateValue.off)
         }
+
         get { return logToFile.state }
     }
     
@@ -255,7 +254,7 @@ class FilesToIpfsView : NSView {
     
     @IBAction func logToFile(_ sender: NSButton) {
         
-        pathToLogfile.isHidden = (logToFile.state == NSOffState)
+        pathToLogfile.isHidden = (logToFile.state == NSControl.StateValue.off)
         
         UserDefaults.standard.setValue(logToFile.state, forKey: "FilesToIpfsLogPreference")
 
