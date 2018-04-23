@@ -1,0 +1,125 @@
+/Applications/FilesToIpfs.app/Contents/Frameworks/
+├── SwiftBase58.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftBase58 -> Versions/Current/SwiftBase58
+│   └── Versions
+│       ├── A
+│       │   ├── Resources
+│       │   │   └── Info.plist
+│       │   └── SwiftBase58
+│       └── Current -> A
+├── SwiftGMP.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftGMP -> Versions/Current/SwiftGMP
+│   └── Versions
+│       ├── A
+│       │   ├── Frameworks
+│       │   │   ├── GMPLib
+│       │   │   │   ├── gmp-MacOSX.h
+│       │   │   │   ├── gmp-iPhoneOS.h
+│       │   │   │   ├── gmp-iPhoneSimulator.h
+│       │   │   │   ├── gmp.h
+│       │   │   │   ├── iphoneos
+│       │   │   │   │   └── libgmp.a
+│       │   │   │   ├── iphonesimulator
+│       │   │   │   │   └── libgmp.a
+│       │   │   │   └── macosx
+│       │   │   │       └── libgmp.a
+│       │   │   ├── libswiftCore.dylib
+│       │   │   ├── libswiftCoreGraphics.dylib
+│       │   │   ├── libswiftDarwin.dylib
+│       │   │   ├── libswiftDispatch.dylib
+│       │   │   ├── libswiftFoundation.dylib
+│       │   │   ├── libswiftIOKit.dylib
+│       │   │   └── libswiftObjectiveC.dylib
+│       │   ├── Resources
+│       │   │   ├── Info.plist
+│       │   │   └── libswiftRemoteMirror.dylib
+│       │   └── SwiftGMP
+│       └── Current -> A
+├── SwiftHex.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftHex -> Versions/Current/SwiftHex
+│   └── Versions
+│       ├── A
+│       │   ├── Resources
+│       │   │   └── Info.plist
+│       │   └── SwiftHex
+│       └── Current -> A
+├── SwiftIpfsApi.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftIpfsApi -> Versions/Current/SwiftIpfsApi
+│   └── Versions
+│       ├── A
+│       │   ├── Frameworks
+│       │   │   ├── libswiftCore.dylib
+│       │   │   ├── libswiftCoreGraphics.dylib
+│       │   │   ├── libswiftDarwin.dylib
+│       │   │   ├── libswiftDispatch.dylib
+│       │   │   ├── libswiftFoundation.dylib
+│       │   │   ├── libswiftIOKit.dylib
+│       │   │   └── libswiftObjectiveC.dylib
+│       │   ├── Resources
+│       │   │   ├── Info.plist
+│       │   │   └── libswiftRemoteMirror.dylib
+│       │   └── SwiftIpfsApi
+│       └── Current -> A
+├── SwiftMultiaddr.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftMultiaddr -> Versions/Current/SwiftMultiaddr
+│   └── Versions
+│       ├── A
+│       │   ├── Resources
+│       │   │   └── Info.plist
+│       │   └── SwiftMultiaddr
+│       └── Current -> A
+├── SwiftMultihash.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── SwiftMultihash -> Versions/Current/SwiftMultihash
+│   └── Versions
+│       ├── A
+│       │   ├── Frameworks
+│       │   │   ├── libswiftCore.dylib
+│       │   │   ├── libswiftCoreGraphics.dylib
+│       │   │   ├── libswiftDarwin.dylib
+│       │   │   ├── libswiftDispatch.dylib
+│       │   │   ├── libswiftFoundation.dylib
+│       │   │   ├── libswiftIOKit.dylib
+│       │   │   └── libswiftObjectiveC.dylib
+│       │   ├── Resources
+│       │   │   ├── Info.plist
+│       │   │   └── libswiftRemoteMirror.dylib
+│       │   └── SwiftMultihash
+│       └── Current -> A
+├── VarInt.framework
+│   ├── Resources -> Versions/Current/Resources
+│   ├── VarInt -> Versions/Current/VarInt
+│   └── Versions
+│       ├── A
+│       │   ├── Frameworks
+│       │   │   ├── libswiftCore.dylib
+│       │   │   ├── libswiftCoreGraphics.dylib
+│       │   │   ├── libswiftDarwin.dylib
+│       │   │   ├── libswiftDispatch.dylib
+│       │   │   ├── libswiftFoundation.dylib
+│       │   │   ├── libswiftIOKit.dylib
+│       │   │   └── libswiftObjectiveC.dylib
+│       │   ├── Resources
+│       │   │   ├── Info.plist
+│       │   │   └── libswiftRemoteMirror.dylib
+│       │   └── VarInt
+│       └── Current -> A
+├── libswiftAppKit.dylib
+├── libswiftCore.dylib
+├── libswiftCoreData.dylib
+├── libswiftCoreGraphics.dylib
+├── libswiftCoreImage.dylib
+├── libswiftDarwin.dylib
+├── libswiftDispatch.dylib
+├── libswiftFoundation.dylib
+├── libswiftIOKit.dylib
+├── libswiftObjectiveC.dylib
+├── libswiftQuartzCore.dylib
+└── libswiftXPC.dylib
+
+50 directories, 72 files

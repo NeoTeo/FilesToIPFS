@@ -149,16 +149,24 @@ class FilesToIpfs : NSViewController {
         
         do {
             let api = try IpfsApi(host: "127.0.0.1", port: 5001)
-            
-            try api.add(filePaths) { result in
-                
-                for index in 0 ..< filePaths.count {
-                    hashes.append(b58String(result[index].hash!))
+            for path in filePaths {
+                try api.add(path) { result in
+                    
+                    for index in 0 ..< result.count {
+                        
+                        if let name = result[index].name, name == (path as NSString).lastPathComponent {
+                            
+                            hashes.append(b58String(result[index].hash!))
+                            
+                            // Call the completion handler if/when we have hashes for all filepaths.
+                            if hashes.count == filePaths.count {
+                                completionHandler(hashes)
+                            }
+                        }
+                    }
                 }
-                
-                completionHandler(hashes)
-                
             }
+            
         } catch {
             print("error generating hashes \(error)")
             exit(EXIT_FAILURE)
@@ -181,9 +189,11 @@ class FilesToIpfs : NSViewController {
             
             self.copyToClipboard(hashes: hashes)
             
-            if self.filesToIpfsView.logState == NSControl.StateValue.off { exit(EXIT_SUCCESS) }
-            
-            self.storeToLog(hashes: hashes, filePaths: filePaths)
+            DispatchQueue.main.async {
+                if self.filesToIpfsView.logState == NSControl.StateValue.off { exit(EXIT_SUCCESS) }
+                
+                self.storeToLog(hashes: hashes, filePaths: filePaths)
+            }
         }
         
     }
