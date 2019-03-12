@@ -19,6 +19,8 @@ Double clicking the resulting Automator file will install it to your system and 
 ## Usage
 
 Select one or more files or folders and right click on the selection. Navigate to Services->FilesToIPFS (or whatever you called the automator script) and select it. Follow the instructions in the window that appears. There is an option to log the added file to a log file of your choosing which will add the hash, the url and the date it was added.
+
+![](ShowFilesToIPFS.gif?raw=true "IPFS native app as a service.")
  
 ## Todo
 
